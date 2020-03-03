@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding: 25px;">
     <Table highlight-row ref="currentRowTable" :columns="columns3" :data="data1"></Table>
     <Button @click="handleClearCurrentRow">Clear</Button>
   </div>

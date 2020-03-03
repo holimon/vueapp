@@ -1,10 +1,12 @@
 <template>
-  <Layout>
+  <Layout class="main">
     <Sider>
       <SideMenu></SideMenu>
     </Sider>
     <Layout>
-      <Header></Header>
+      <Header class="top-navi">
+        <TopNavi></TopNavi>
+      </Header>
       <Content>
         <div id="appcontent">
           <router-view />
@@ -16,19 +18,22 @@
 
 <script>
 import SideMenu from "../components/sidemenus";
+import TopNavi from "../components/topnavis";
 export default {
   name: "main",
   components: {
-    SideMenu
+    SideMenu,
+    TopNavi
   }
 };
 </script>
 
 <style lang="less" scoped>
-/deep/ .ivu-layout-sider {
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  min-width: 0;
-  height: 1024px;
+.main {
+  height: 100%;
+  .top-navi {
+    background-color: lemonchiffon;
+    width: 100%;
+  }
 }
 </style>

@@ -10,11 +10,8 @@ Vue.config.productionTip = false
 Vue.use(ViewUI)
 
 Vue.prototype.$http = Axios
-const urlSets = {
-  production:'http://localhost:8080',
-  development:'http://localhost:8088'
-}
-Vue.prototype.$baseUrl = process.env.NODE_ENV === 'production' ? urlSets.production : urlSets.development
+
+Vue.prototype.$baseUrl = 'http://localhost:8080'
 
 new Vue({
   i18n,

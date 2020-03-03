@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100%">
+  <div>
     <Row type="flex">
       <Col span="8">
         <Menu theme="dark" :open-names="['1']" accordion style="width:200px">
@@ -46,6 +46,6 @@ export default {
 
 <style lang="less" scoped>
 /deep/ .ivu-menu {
-  height: 100%;
+  // height: 100%;
 }
 </style>
