@@ -3,20 +3,27 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const router = new Router({
-    mode:'history',
-    routes:[
+    mode: 'history',
+    routes: [
         {
-            path:'/',redirect: {path:'/login'}
+            path: '/',
+            redirect: '/login'
         },
         {
-            path:'/login',
-            name:'login',
-            component:() => import('../views/login.vue')
+            path: '/home',
+            component: () => import('../views/main.vue'),
+            children: [
+                {
+                    path: '/home',
+                    name: 'home',
+                    component: () => import('../views/home.vue')
+                }
+            ]
         },
         {
-            path:'/menu',
-            name:'menu',
-            component:() => import('../components/menus.vue')
+            path: '/login',
+            name: 'login',
+            component: () => import('../views/login.vue')
         }
     ]
 })
