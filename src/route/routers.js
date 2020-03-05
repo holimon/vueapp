@@ -12,65 +12,67 @@ export default [
         component: () => import('../views/login.vue')
     },
     {
-        path: '/home',
+        path: '/views',
+        name: 'views',
         meta: {
             hideInBread: true
         },
         component: () => import('../views/main.vue'),
         children: [
             {
-                path: 'dash',
-                name: 'dash',
+                path: '/views',
+                name: 'home',
                 meta: {
                     icon: 'ios-home',
                     title: '{{sidemenu.MenuDashboard}}'
                 },
                 component: () => import('../views/home.vue')
-            }
-        ]
-    },
-    {
-        path: '/files',
-        component: () => import('../views/main.vue'),
-        children: [
+            },
             {
-                path: 'filespage',
-                name: 'filespage',
+                path: '/views/files',
+                name: 'files',
                 meta: {
                     icon: 'ios-folder',
                     title: '{{sidemenu.MenuFiles}}'
                 },
                 component: () => import('../views/files.vue')
-            }
-        ]
-    },
-    {
-        path: '/process',
-        component: () => import('../views/main.vue'),
-        children: [
+            },
             {
-                path: 'processpage',
-                name: 'processpage',
+                path: '/views/process',
+                name: 'process',
                 meta: {
                     icon: 'md-swap',
                     title: '{{sidemenu.MenuProcess}}'
                 },
                 component: () => import('../views/process.vue')
-            }
-        ]
-    },
-    {
-        path: '/resources',
-        component: () => import('../views/main.vue'),
-        children: [
+            },
             {
-                path: 'resourcespage',
-                name: 'resourcespage',
+                path: '/views/resources',
+                name: 'resources',
                 meta: {
                     icon: 'ios-podium',
                     title: '{{sidemenu.MenuResource}}'
                 },
-                component: () => import('../views/resources.vue')
+                children:[
+                    {
+                        path:'/views/resources/cpu',
+                        name:'cpu',
+                        meta:{
+                            icon:'ios-podium',
+                            title:'{{sidemenu.MenuResource}}',
+                            component: () => import('../views/resources.vue')
+                        }
+                    },
+                    {
+                        path:'/views/resources/mem',
+                        name:'mem',
+                        meta:{
+                            icon:'ios-podium',
+                            title:'{{sidemenu.MenuResource}}',
+                            component: () => import('../views/resources.vue')
+                        }
+                    }
+                ]
             }
         ]
     }

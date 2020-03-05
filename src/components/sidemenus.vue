@@ -2,12 +2,12 @@
   <div>
     <Row type="flex">
       <Col span="8">
-        <Menu theme="dark" :active-name="activeName" accordion style="width:200px">
+        <Menu theme="dark" :active-name="activeName" :open-names="openNames" accordion style="width:200px">
           <template v-for="item in menuList">
-            <template v-if="item.children && item.children.length === 1">
-              <MenuItem :name="item.children[0].name" :key="`menu-${item.children[0].name}`">
-                <Icon :type="item.children[0].icon || ''" />
-                <span>{{ showTitle(item.children[0]) }}</span>
+            <template v-if="!item.children">
+              <MenuItem :name="item.name" :key="`menu-${item.name}`">
+                <Icon :type="item.icon || ''" />
+                <span>{{ showTitle(item) }}</span>
               </MenuItem>
             </template>
             <template v-else>
@@ -40,12 +40,16 @@ export default {
   data() {
     return {
       activeName: "dash",
+      openNames:[]
     };
   },
   methods: {
     showTitle(item) {
       return showTitle(item, this);
     },
+    handleOnSelect(name){
+      this.activeName = name
+    }
   },
   props: {
     menuList: {
