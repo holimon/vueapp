@@ -1,7 +1,9 @@
 <template>
   <Breadcrumb>
     <BreadcrumbItem to="/home">Home</BreadcrumbItem>
-    <BreadcrumbItem to="/home">Home2</BreadcrumbItem>
+    <BreadcrumbItem to="/process">Home2</BreadcrumbItem>
+    <BreadcrumbItem to="/files">Home2</BreadcrumbItem>
+    <BreadcrumbItem to="/resources">Home2</BreadcrumbItem>
     <BreadcrumbItem>Home3</BreadcrumbItem>
   </Breadcrumb>
 </template>

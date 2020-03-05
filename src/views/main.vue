@@ -1,7 +1,7 @@
 <template>
   <Layout class="main">
-    <Sider>
-      <SideMenu></SideMenu>
+    <Sider class="left-side">
+      <SideMenu :menuList="menuList"></SideMenu>
     </Sider>
     <Layout>
       <Header class="top-navi">
@@ -20,10 +20,15 @@
 import SideMenu from "../components/sidemenus";
 import TopNavi from "../components/topnavis";
 export default {
-  name: "main",
+  name: "mainview",
   components: {
     SideMenu,
     TopNavi
+  },
+  computed:{
+    menuList(){
+      return this.$store.getters.menuList
+    }
   }
 };
 </script>
@@ -31,8 +36,12 @@ export default {
 <style lang="less" scoped>
 .main {
   height: 100%;
+  .left-side{
+    overflow: hidden;
+    overflow-y: scroll;
+  }
   .top-navi {
-    background-color: lemonchiffon;
+    background-color: rgba(100, 100, 100, 0.1);
     width: 100%;
   }
 }

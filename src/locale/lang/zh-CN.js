@@ -7,5 +7,11 @@ export default {
         LoginFormUserTips:'请输入用户名',
         LoginFormPawdTips: '请输入密码',
         LoginFormPawdTypeTips:'密码字符不少于6个'
+    },
+    sidemenu:{
+        MenuDashboard:'首页',
+        MenuProcess:'进程管理',
+        MenuFiles:'文件管理',
+        MenuResource:'资源监视'
     }
 }

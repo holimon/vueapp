@@ -2,36 +2,31 @@
   <div>
     <Row type="flex">
       <Col span="8">
-        <Menu theme="dark" :open-names="['1']" accordion style="width:200px">
-          <Submenu name="1">
-            <template slot="title">
-              <Icon type="ios-paper" />内容管理
+        <Menu theme="dark" :active-name="activeName" accordion style="width:200px">
+          <template v-for="item in menuList">
+            <template v-if="item.children && item.children.length === 1">
+              <MenuItem :name="item.children[0].name" :key="`menu-${item.children[0].name}`">
+                <Icon :type="item.children[0].icon || ''" />
+                <span>{{ showTitle(item.children[0]) }}</span>
+              </MenuItem>
             </template>
-            <MenuItem name="1-1">文章管理</MenuItem>
-            <MenuItem name="1-2">评论管理</MenuItem>
-            <MenuItem name="1-3">举报管理</MenuItem>
-          </Submenu>
-          <Submenu name="2">
-            <template slot="title">
-              <Icon type="ios-people" />用户管理
+            <template v-else>
+              <template v-if="item.children">
+                <Submenu :name="item.name || ''" :key="item.name || ''">
+                  <template slot="title">
+                    <Icon :type="item.icon || ''" />
+                    <span>{{item.name}}</span>
+                  </template>
+                  <template v-for="child in item.children">
+                    <MenuItem :name="child.name || ''" :key="`submenu-${child.name || ''}`">
+                      <Icon :type="child.icon || '' " />
+                      <span>{{ showTitle(child)}}</span>
+                    </MenuItem>
+                  </template>
+                </Submenu>
+              </template>
             </template>
-            <MenuItem name="2-1">新增用户</MenuItem>
-            <MenuItem name="2-2">活跃用户</MenuItem>
-          </Submenu>
-          <Submenu name="3">
-            <template slot="title">
-              <Icon type="ios-stats" />统计分析
-            </template>
-            <MenuGroup title="使用">
-              <MenuItem name="3-1">新增和启动</MenuItem>
-              <MenuItem name="3-2">活跃分析</MenuItem>
-              <MenuItem name="3-3">时段分析</MenuItem>
-            </MenuGroup>
-            <MenuGroup title="留存">
-              <MenuItem name="3-4">用户留存</MenuItem>
-              <MenuItem name="3-5">流失用户</MenuItem>
-            </MenuGroup>
-          </Submenu>
+          </template>
         </Menu>
       </Col>
     </Row>
@@ -39,13 +34,29 @@
 </template>
 
 <script>
+import { showTitle } from "../libs/utils";
 export default {
-  name: "sidemenus"
+  name: "sidemenus",
+  data() {
+    return {
+      activeName: "dash",
+    };
+  },
+  methods: {
+    showTitle(item) {
+      return showTitle(item, this);
+    },
+  },
+  props: {
+    menuList: {
+      type: Array,
+      default() {
+        return [];
+      }
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
-/deep/ .ivu-menu {
-  // height: 100%;
-}
 </style>
