@@ -27,8 +27,6 @@ export default {
   },
   computed:{
     menuList(){
-      let menulist = this.$store.getters.menuList
-      console.log(menulist)
       return this.$store.getters.menuList
     }
   }

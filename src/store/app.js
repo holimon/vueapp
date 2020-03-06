@@ -15,7 +15,7 @@ export default {
         menuList: () => {
             let res = []
             routers.forEach(element => {
-                if (element.name === 'views') {
+                if (element.name === 'main') {
                     res = getMenuByRouter(element.children)
                 }
             });

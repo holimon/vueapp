@@ -71,8 +71,7 @@ export default {
     handleSubmit: function() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          // console.log('menulist:'+this.$store.getters.menuList)
-          this.$router.push("/home/dash");
+          this.$router.push("/views");
         }
       });
     }

@@ -27,6 +27,7 @@ export const getMenuByRouter = (list) => {
       if (!item.meta || (item.meta && !item.meta.hideInMenu)) {
         let obj = {
           icon: (item.meta && item.meta.icon) || '',
+          path: item.path,
           name: item.name,
           meta: item.meta
         }

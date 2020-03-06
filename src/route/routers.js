@@ -13,7 +13,7 @@ export default [
     },
     {
         path: '/views',
-        name: 'views',
+        name: 'main',
         meta: {
             hideInBread: true
         },
@@ -21,7 +21,7 @@ export default [
         children: [
             {
                 path: '/views',
-                name: 'home',
+                name: 'views',
                 meta: {
                     icon: 'ios-home',
                     title: '{{sidemenu.MenuDashboard}}'
