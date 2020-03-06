@@ -24,17 +24,16 @@ export const hasChild = (item) => {
 export const getMenuByRouter = (list) => {
   let res = []
   forEach(list, item => {
-      if (!item.meta || (item.meta && !item.meta.hideInMenu)) {
+      if (item.meta) {
         let obj = {
           icon: (item.meta && item.meta.icon) || '',
           path: item.path,
           name: item.name,
           meta: item.meta
         }
-        if ((hasChild(item) || (item.meta && item.meta.showAlways))) {
+        if (hasChild(item)) {
           obj.children = getMenuByRouter(item.children)
         }
-        if (item.meta && item.meta.href) obj.href = item.meta.href
         res.push(obj)
       }
   })

@@ -6,17 +6,11 @@ export default [
     {
         path: '/login',
         name: 'login',
-        meta: {
-            hideInMenu: true
-        },
         component: () => import('../views/login.vue')
     },
     {
         path: '/views',
         name: 'main',
-        meta: {
-            hideInBread: true
-        },
         component: () => import('../views/main.vue'),
         children: [
             {
